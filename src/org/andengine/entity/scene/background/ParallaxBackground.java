@@ -24,7 +24,6 @@ public class ParallaxBackground extends Background {
 
 	private final ArrayList<ParallaxEntity> mParallaxEntities = new ArrayList<ParallaxEntity>();
 	private int mParallaxEntityCount;
-
 	protected float mParallaxValue;
 
 	// ===========================================================
@@ -93,13 +92,16 @@ public class ParallaxBackground extends Background {
 		final float mParallaxFactor;
 		final IAreaShape mAreaShape;
 
+		boolean onAxisX=true;
+
 		// ===========================================================
 		// Constructors
 		// ===========================================================
 
-		public ParallaxEntity(final float pParallaxFactor, final IAreaShape pAreaShape) {
+		public ParallaxEntity(final float pParallaxFactor, final IAreaShape pAreaShape,final boolean onAxisX) {
 			this.mParallaxFactor = pParallaxFactor;
 			this.mAreaShape = pAreaShape;
+			this.onAxisX=onAxisX;
 		}
 
 		// ===========================================================
@@ -130,7 +132,14 @@ public class ParallaxBackground extends Background {
 				
 				do {
 					this.mAreaShape.onDraw(pGLState, pCamera);
-					pGLState.translateModelViewGLMatrixf(shapeWidthScaled, 0, 0);
+					if(onAxisX)
+					{
+						pGLState.translateModelViewGLMatrixf(shapeWidthScaled, 0, 0);
+					}else
+					{
+						pGLState.translateModelViewGLMatrixf(0,shapeWidthScaled,  0);
+					}
+					
 					currentMaxX += shapeWidthScaled;
 				} while(currentMaxX < cameraWidth);
 			}

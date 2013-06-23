@@ -186,7 +186,7 @@ public class AStarPathFinder<T> implements IPathFinder<T> {
 	// Inner and Anonymous Classes
 	// ===========================================================
 
-	private static final class Node implements Comparable<Node> {
+	public static final class Node implements Comparable<Node> {
 		// ===========================================================
 		// Constants
 		// ===========================================================
