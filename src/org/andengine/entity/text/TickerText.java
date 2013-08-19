@@ -209,4 +209,7 @@ public class TickerText extends Text {
 		// Inner and Anonymous Classes
 		// ===========================================================
 	}
+	public int getcharacterToDraw(){
+		return mCharactersToDraw;
+	}
 }

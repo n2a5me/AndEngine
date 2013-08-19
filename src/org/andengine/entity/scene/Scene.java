@@ -15,6 +15,7 @@ import org.andengine.util.Constants;
 import org.andengine.util.adt.list.SmartList;
 import org.andengine.util.color.Color;
 
+import android.annotation.SuppressLint;
 import android.util.SparseArray;
 
 /**
@@ -125,7 +126,7 @@ public class Scene extends Entity {
 		return this.mOnAreaTouchListener != null;
 	}
 
-	private void setParentScene(final Scene pParentScene) {
+	public void setParentScene(final Scene pParentScene) {
 		this.mParentScene = pParentScene;
 	}
 
@@ -235,6 +236,7 @@ public class Scene extends Entity {
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
+	@SuppressLint("WrongCall")
 	@Override
 	protected void onManagedDraw(final GLState pGLState, final Camera pCamera) {
 		final Scene childScene = this.mChildScene;
@@ -468,7 +470,9 @@ public class Scene extends Entity {
 			this.mParentScene = null;
 		}
 	}
-
+	public Scene getParentScene(){
+		return mParentScene;
+	}
 	// ===========================================================
 	// Inner and Anonymous Classes
 	// ===========================================================
